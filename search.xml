@@ -4,6 +4,8 @@
     <title>HellowWorld</title>
     <url>/2019/07/21/HellowWorld/</url>
     <content><![CDATA[<h2 id="大家好"><a href="#大家好" class="headerlink" title="大家好"></a>大家好</h2><p>博客正式建立，今后将会在这里记录一些游戏开发上积累的小知识，主要是作为自己的总结，如果同时也能为别人带去一点帮助就再好不过了。</p>
+<a id="more"></a>
+
 <p>同时也会写一些游戏和生活中遇到的有趣的事情，工作学习之余也要享受生活中的乐趣。</p>
 <hr>
 <p>由于我的能力尚且粗浅，文章中必然有不妥和疏漏之处，还请大佬斧正。文章的评论系统由于 LeanCloud 需要实名认证暂时没有开启，认证通过后会即使上线。</p>
@@ -20,6 +22,8 @@
     <title>在Unity中使用ComputeShader：初步接触</title>
     <url>/2019/07/21/%E5%9C%A8Unity%E4%B8%AD%E4%BD%BF%E7%94%A8ComputeShader/</url>
     <content><![CDATA[<h1 id="在Unity中使用ComputeShader：初步接触"><a href="#在Unity中使用ComputeShader：初步接触" class="headerlink" title="在Unity中使用ComputeShader：初步接触"></a>在Unity中使用ComputeShader：初步接触</h1><h2 id="1-什么是ComputeShader："><a href="#1-什么是ComputeShader：" class="headerlink" title="1.什么是ComputeShader："></a>1.什么是ComputeShader：</h2><p>ComputeShader(以下简称CS），中文可翻译为计算着色器，是一段能运行在显卡上但并不在正常渲染管线中执行的程序。从功能上，CS并不仅仅应用于渲染相关的功能，同时利用GPU并行计算的特性，CS可以承担大量的通用并行计算。</p>
+<a id="more"></a>
+
 <h2 id="2-Unity中的ComputeShader"><a href="#2-Unity中的ComputeShader" class="headerlink" title="2.Unity中的ComputeShader"></a>2.Unity中的ComputeShader</h2><p>根据<a href="https://docs.unity3d.com/Manual/class-ComputeShader.html">Unity官方文档</a>，Unity中的ComputeShader在技术上更接近于DX11的DirectCompute技术，其使用限制为：</p>
 <p>· 使用DX11或DX12以及支持SM5.0的GUP</p>
 <p>· 支持Metal graphics API的IOS及macOS设备</p>
@@ -67,7 +71,9 @@
   <entry>
     <title>UE4-在插件中添加GlobalShader</title>
     <url>/2019/10/31/UE4-%E6%8F%92%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0GlobalShader/</url>
-    <content><![CDATA[<h3 id="UE4-在插件中添加GlobalShader"><a href="#UE4-在插件中添加GlobalShader" class="headerlink" title="UE4-在插件中添加GlobalShader"></a>UE4-在插件中添加GlobalShader</h3><h5 id="由于UE4-4-21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4-23-1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。"><a href="#由于UE4-4-21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4-23-1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。" class="headerlink" title="由于UE4 4.21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4.23.1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。"></a>由于UE4 4.21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4.23.1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。</h5><h3 id="引擎版本：4-23-1"><a href="#引擎版本：4-23-1" class="headerlink" title="引擎版本：4.23.1"></a>引擎版本：4.23.1</h3><h3 id="添加步骤："><a href="#添加步骤：" class="headerlink" title="添加步骤："></a>添加步骤：</h3><h3 id="1-创建一个C-的UE4工程，如下图"><a href="#1-创建一个C-的UE4工程，如下图" class="headerlink" title="1.创建一个C++的UE4工程，如下图"></a>1.创建一个C++的UE4工程，如下图</h3><p><img src="https://s2.ax1x.com/2019/10/31/KIsMF0.png" alt="创建UE4工程"><br>创建时选择C++切页，工程类型选择BasicCode，并且不需要StarterContent</p>
+    <content><![CDATA[<h3 id="UE4-在插件中添加GlobalShader"><a href="#UE4-在插件中添加GlobalShader" class="headerlink" title="UE4-在插件中添加GlobalShader"></a>UE4-在插件中添加GlobalShader</h3><h5 id="由于UE4-4-21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4-23-1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。"><a href="#由于UE4-4-21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4-23-1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。" class="headerlink" title="由于UE4 4.21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4.23.1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。"></a>由于UE4 4.21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4.23.1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。</h5><a id="more"></a>
+
+<h3 id="引擎版本：4-23-1"><a href="#引擎版本：4-23-1" class="headerlink" title="引擎版本：4.23.1"></a>引擎版本：4.23.1</h3><h3 id="添加步骤："><a href="#添加步骤：" class="headerlink" title="添加步骤："></a>添加步骤：</h3><h3 id="1-创建一个C-的UE4工程，如下图"><a href="#1-创建一个C-的UE4工程，如下图" class="headerlink" title="1.创建一个C++的UE4工程，如下图"></a>1.创建一个C++的UE4工程，如下图</h3><p><img src="https://s2.ax1x.com/2019/10/31/KIsMF0.png" alt="创建UE4工程"><br>创建时选择C++切页，工程类型选择BasicCode，并且不需要StarterContent</p>
 <h2 id="这里我将工程取名为GlobalShaderBlog"><a href="#这里我将工程取名为GlobalShaderBlog" class="headerlink" title="这里我将工程取名为GlobalShaderBlog"></a>这里我将工程取名为<strong>GlobalShaderBlog</strong></h2><h3 id="2-创建一个空插件"><a href="#2-创建一个空插件" class="headerlink" title="2.创建一个空插件"></a>2.创建一个空插件</h3><p>工程打开后，在上方菜单栏的Edit目录下，点击Plugin，打开插件窗口</p>
 <p><img src="https://s2.ax1x.com/2019/10/31/KIscmd.png" alt="创建插件1"></p>
 <p>点击插件窗口右下角的NewPlugin按钮，打开插件创建窗口</p>
