@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="RCBelmont&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="RCBelmont&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="RCBelmont">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>RCBelmont's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">RCBelmont's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/31/UE4-%E6%8F%92%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0GlobalShader/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Icon.jpg">
+      <meta itemprop="name" content="RCBelmont">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RCBelmont's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/31/UE4-%E6%8F%92%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0GlobalShader/" class="post-title-link" itemprop="url">UE4-在插件中添加GlobalShader</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-31 14:45:58" itemprop="dateCreated datePublished" datetime="2019-10-31T14:45:58+08:00">2019-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-12 22:10:58" itemprop="dateModified" datetime="2020-09-12T22:10:58+08:00">2020-09-12</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/31/UE4-%E6%8F%92%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0GlobalShader/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/31/UE4-%E6%8F%92%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0GlobalShader/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="UE4-在插件中添加GlobalShader"><a href="#UE4-在插件中添加GlobalShader" class="headerlink" title="UE4-在插件中添加GlobalShader"></a>UE4-在插件中添加GlobalShader</h3><h5 id="由于UE4-4-21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4-23-1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。"><a href="#由于UE4-4-21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4-23-1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。" class="headerlink" title="由于UE4 4.21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4.23.1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。"></a>由于UE4 4.21版本之后对渲染关系进行了部分修改，因此通过插件添加GlobalShader的流程也发生了一些改变。这篇博客则是记录在4.23.1版本的引擎中，通过插件加入一个GlobalShader并调用绘制的流程。</h5><h3 id="引擎版本：4-23-1"><a href="#引擎版本：4-23-1" class="headerlink" title="引擎版本：4.23.1"></a>引擎版本：4.23.1</h3><h3 id="添加步骤："><a href="#添加步骤：" class="headerlink" title="添加步骤："></a>添加步骤：</h3><h3 id="1-创建一个C-的UE4工程，如下图"><a href="#1-创建一个C-的UE4工程，如下图" class="headerlink" title="1.创建一个C++的UE4工程，如下图"></a>1.创建一个C++的UE4工程，如下图</h3><p><img src="https://s2.ax1x.com/2019/10/31/KIsMF0.png" alt="创建UE4工程"><br>创建时选择C++切页，工程类型选择BasicCode，并且不需要StarterContent</p>
+<h2 id="这里我将工程取名为GlobalShaderBlog"><a href="#这里我将工程取名为GlobalShaderBlog" class="headerlink" title="这里我将工程取名为GlobalShaderBlog"></a>这里我将工程取名为<strong>GlobalShaderBlog</strong></h2><h3 id="2-创建一个空插件"><a href="#2-创建一个空插件" class="headerlink" title="2.创建一个空插件"></a>2.创建一个空插件</h3><p>工程打开后，在上方菜单栏的Edit目录下，点击Plugin，打开插件窗口</p>
+<p><img src="https://s2.ax1x.com/2019/10/31/KIscmd.png" alt="创建插件1"></p>
+<p>点击插件窗口右下角的NewPlugin按钮，打开插件创建窗口</p>
+<p><img src="https://s2.ax1x.com/2019/10/31/KIyauQ.png" alt="创建插件2"></p>
+<p>选择Blank类型，填上插件名称，点击CreatePlugin即可</p>
+<p><img src="https://s2.ax1x.com/2019/10/31/KIydBj.png" alt="创建插件3"></p>
+<h2 id="这里我的插件取名叫ShaderBlogPlugin"><a href="#这里我的插件取名叫ShaderBlogPlugin" class="headerlink" title="这里我的插件取名叫ShaderBlogPlugin"></a>这里我的插件取名叫<strong>ShaderBlogPlugin</strong></h2><h3 id="3-创建一个Shader文件"><a href="#3-创建一个Shader文件" class="headerlink" title="3.创建一个Shader文件"></a>3.创建一个Shader文件</h3><p>进入插件目录，位于工程目录-&gt;Plugins-&gt;[插件名称]目录下。如下图所示</p>
+<p><img src="https://s2.ax1x.com/2019/10/31/KIWKu8.png" alt="插件路径"><br><img src="https://s2.ax1x.com/2019/10/31/KIWQHg.png" alt="插件目录"></p>
+<p>在这个路径下创建一个Shaders文件夹, 这里文件夹的路径和名称没有严格的限制，为了保证插件的完成型，建议创建到插件目录中。</p>
+<p>在Shaders文件夹中创建一个usf文件(usf文件为UE4引擎的Shader文件格式，可以创建一个txt文件，再修改扩展名为usf)</p>
+<p>在usf文件中写入如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;&#x2F;Engine&#x2F;Public&#x2F;Platform.ush&quot;</span><br><span class="line"></span><br><span class="line">float4 SimpleColor;</span><br><span class="line">void MainVS(</span><br><span class="line"> in float4 InPosition : ATTRIBUTE0,</span><br><span class="line"> out float4 OutPosition : SV_POSITION</span><br><span class="line"> )</span><br><span class="line">&#123;</span><br><span class="line"> &#x2F;&#x2F; screenspace position from vb</span><br><span class="line"></span><br><span class="line"> float2 Pos &#x3D; InPosition.xy;</span><br><span class="line"></span><br><span class="line">	Pos.xy &#x3D; Pos.xy*2 - 1.0f;</span><br><span class="line">	Pos.xy *&#x3D; float2(1, -1);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;OutPosition &#x3D; float4(Pos, 0, 1);</span><br><span class="line">	OutPosition &#x3D; InPosition;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MainPS(</span><br><span class="line">    out float4 OutColor : SV_Target0</span><br><span class="line">    )</span><br><span class="line">&#123;</span><br><span class="line">    OutColor &#x3D; SimpleColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>到此我们完成了Shader文件的创建</p>
+<h3 id="4-设置Shader虚拟路径"><a href="#4-设置Shader虚拟路径" class="headerlink" title="4.设置Shader虚拟路径"></a>4.设置Shader虚拟路径</h3><p>知道插件的cpp文件，这里是ShaderBlogPlugin.cpp， 在StartupModule函数中添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FString PluginShaderDir &#x3D; FPaths::Combine(IPluginManager::Get().FindPlugin(TEXT(&quot;WaterSurfacePlugin&quot;))-&gt;GetBaseDir(), TEXT(&quot;Shaders&quot;));</span><br><span class="line">	AddShaderSourceDirectoryMapping(TEXT(&quot;&#x2F;Plugin&#x2F;WaterSurfacePlugin&quot;), PluginShaderDir);</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.ax1x.com/2019/10/31/KotI78.png" alt="添加Shader虚拟路径"></p>
+<p>这段代码的意义在于将之前我们添加的Shader目录的绝对路径映射为我们设置的路径，在之后的代码中则可以通过自定义路径名称加载Shader文件。</p>
+<h3 id="5-创建Shader的C-文件"><a href="#5-创建Shader的C-文件" class="headerlink" title="5.创建Shader的C++文件"></a>5.创建Shader的C++文件</h3><p>在插件的目录下，Source文件夹的ShaderBlogPlugin目录下添加TestShader.cpp和TestShader.h, 两个文件分别放在Private和Public文件夹下。</p>
+<p><img src="https://s2.ax1x.com/2019/10/31/KIORfK.png" alt="shader代码"></p>
+<p>创建了代码后，最好让引擎刷新一下Vs的工程文件，刷新工程文件的方法有两种：</p>
+<p>1.右键项目的工程文件(.uproject), 点击<em>Generate Visual Studio project files</em><br><img src="https://s2.ax1x.com/2019/10/31/KIXOER.png" alt="UE工程文件"><br><img src="https://s2.ax1x.com/2019/10/31/KIXXU1.png" alt="生成Vs文件"></p>
+<p>2.在编辑器菜单栏File目录下，点击<em>Refresh Visual Studio 2019 Project</em></p>
+<p><img src="https://s2.ax1x.com/2019/10/31/KIjHRf.png" alt="刷新VS工程文件"></p>
+<h3 id="6-定义Shader基类"><a href="#6-定义Shader基类" class="headerlink" title="6.定义Shader基类"></a>6.定义Shader基类</h3><p>参考UE引擎中其他Shader的写法，这里直接在cpp文件中定义Shader的类。</p>
+<p>首先定义一个Shader的基类，这个基类继承自FGlobalShader，如下图所示：<br><img src="https://s2.ax1x.com/2019/10/31/KIxE1f.png" alt="Shader类定义"></p>
+<p>需要注意的是，这里我们引入的GlobalShader.h属于RenderCore模块，需要再插件的build.cs文件中添加依赖，否则会导致编译报错。添加依赖如下图所示：<br><img src="https://s2.ax1x.com/2019/10/31/KIxqbQ.png" alt="添加依赖"></p>
+<p>接下来我们编写Shader类的构造函数，如下图所示, 由于我们需要在构造函数中绑定参数，因此参数也声明出来<br><img src="https://s2.ax1x.com/2019/10/31/KIzrIs.png" alt="构造函数"></p>
+<p>如果Shader中包含“#include “/Engine/Public/Platform.ush”的话，就需要实现一个平台判断接口，这个接口主要判断在当前平台上，Shader是否应该被编译<br><img src="https://s2.ax1x.com/2019/10/31/KopSnU.png" alt="平台判断"></p>
+<p>接下来则需要片段Shader在该平台是否应该被缓存<br><img src="https://s2.ax1x.com/2019/10/31/KoiroF.png" alt="缓存判断"></p>
+<p><strong>这里对应编译和缓存的这两个接口的功能还不是很理解，后面会继续补充</strong></p>
+<p>之后我们添加两个函数，一个参数的序列化函数以及一个参数设置函数<br><img src="https://s2.ax1x.com/2019/10/31/KoF3Ox.png" alt="参数接口"></p>
+<p>至此，Shader的基类实现完成</p>
+<h3 id="7-实现VertextShader-和-PixelShader"><a href="#7-实现VertextShader-和-PixelShader" class="headerlink" title="7.实现VertextShader 和 PixelShader"></a>7.实现VertextShader 和 PixelShader</h3><p>创建两个类，FMyTestVs以及FMyTestPs，都继承自基类FTestShader。构造函数如图，没有特别的。需要通过宏<strong>DECLARE_EXPORTED_SHADER_TYPE</strong>对Shader进行声明。<br><img src="https://s2.ax1x.com/2019/10/31/KokPAO.png" alt="实现VS和Ps"></p>
+<p>完成类声明后通过宏进行C++代码与Shader文件的关联<br><img src="https://s2.ax1x.com/2019/10/31/KoN3jI.png" alt="关联Shader"><br>第一个参数留空，第二个参数填写要关联的Shadeder类，第三个参数填写shader路径(这里就使用了之前定义的虚拟路径)， 第四个参数填写关联的Shader函数名称， 第四个参数为Shader的类型。</p>
+<p>至此，Shader的创建就算完成了。</p>
+<h3 id="8-创建顶点声明"><a href="#8-创建顶点声明" class="headerlink" title="8.创建顶点声明"></a>8.创建顶点声明</h3><p>如果我们要传入想要的顶点参数，例如位置，uv，法线等，则需要声明顶点信息，如下图所示</p>
+<p><img src="https://s2.ax1x.com/2019/10/31/KoeFl4.png" alt="声明顶点"></p>
+<p>首先我们声明一个结构体，命名为FMyVertex，包含一个FVector4类型的属性，名称为Position</p>
+<p>然后我们声明一个继承自FRenderReource的类，命名为FMyVertexDeclaration。我们需要定义两个虚方法，InitRHI以及ReleaseRHI，用于初始化和释放。</p>
+<p>初始化函数中最重要的为创建VertextElement时，第四个参数为我们要绑定的ATTRIBUTE语义顺序<br><img src="https://s2.ax1x.com/2019/10/31/KouQpT.png" alt="语义顺序"></p>
+<p>完成类定义后，使用TGlobalResource创建一个全局的声明示例，通过这个方法创建可以自动执行InitRHI，否则需要手动调用</p>
+<p><img src="https://s2.ax1x.com/2019/10/31/KouTBj.png" alt="示例"></p>
+<h3 id="8-编写绘制调用函数"><a href="#8-编写绘制调用函数" class="headerlink" title="8.编写绘制调用函数"></a>8.编写绘制调用函数</h3><p>TestShader.h中声明一个FShaderTest类，并声明一个静态函数Draw_RenderThread</p>
+<p><img src="https://s2.ax1x.com/2019/10/31/KoMCQS.png" alt="测试绘制类"></p>
+<p>然后在TestShader.cpp中实现函数：</p>
+<p><img src="https://s2.ax1x.com/2019/10/31/KodUUK.png" alt="实现函数"></p>
+<h3 id="9-测试"><a href="#9-测试" class="headerlink" title="9.测试"></a>9.测试</h3><p>在插件目录下创建一个继承Actor的C++代码，这里可以直接使用引擎的创建流程<br><img src="https://s2.ax1x.com/2019/10/31/KoYV2R.png" alt="创建Actor"></p>
+<p>添加一个Draw函数并实现<br><img src="https://s2.ax1x.com/2019/10/31/KotYY4.png"></p>
+<p>修改插件的LoadingPhase：<br>在ShaderBlogPlugin.uplugin中，将插件的LoadingPhase改为PostConfigInit。<br><img src="https://s2.ax1x.com/2019/10/31/KowGRg.png"></p>
+<p>运行（F5)，编译完成后，会打开一个引擎编辑器，然后我们新建一个蓝图继承MyActor,<br>同时创建一个RenderTarget</p>
+<p><img src="https://s2.ax1x.com/2019/10/31/KowHQH.png"></p>
+<p><img src="https://s2.ax1x.com/2019/10/31/Kowbyd.png"></p>
+<p>然后蓝图按如下连接:<br><img src="https://s2.ax1x.com/2019/10/31/KowqOA.png"></p>
+<p>红色箭头选择刚才创建的RT</p>
+<p>将蓝图拖到场景中，点击运行，然后双击刚才创建的RT会发现绘制了一个红色的方块<br><img src="https://s2.ax1x.com/2019/10/31/Kow7Se.png"></p>
+<p>至此，所有的工作就完成了！！！</p>
+<p>工程的源文件在下面这个网盘地址，有兴趣可以下载来看看</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1BeoPw1kSeK8WjVEAnheziw">https://pan.baidu.com/s/1BeoPw1kSeK8WjVEAnheziw</a> </p>
+<p>提取码：dh0i </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/%E5%9C%A8Unity%E4%B8%AD%E4%BD%BF%E7%94%A8ComputeShader/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Icon.jpg">
+      <meta itemprop="name" content="RCBelmont">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RCBelmont's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/21/%E5%9C%A8Unity%E4%B8%AD%E4%BD%BF%E7%94%A8ComputeShader/" class="post-title-link" itemprop="url">在Unity中使用ComputeShader：初步接触</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-21 22:13:53" itemprop="dateCreated datePublished" datetime="2019-07-21T22:13:53+08:00">2019-07-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-12 22:10:58" itemprop="dateModified" datetime="2020-09-12T22:10:58+08:00">2020-09-12</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/07/21/%E5%9C%A8Unity%E4%B8%AD%E4%BD%BF%E7%94%A8ComputeShader/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/07/21/%E5%9C%A8Unity%E4%B8%AD%E4%BD%BF%E7%94%A8ComputeShader/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="在Unity中使用ComputeShader：初步接触"><a href="#在Unity中使用ComputeShader：初步接触" class="headerlink" title="在Unity中使用ComputeShader：初步接触"></a>在Unity中使用ComputeShader：初步接触</h1><h2 id="1-什么是ComputeShader："><a href="#1-什么是ComputeShader：" class="headerlink" title="1.什么是ComputeShader："></a>1.什么是ComputeShader：</h2><p>ComputeShader(以下简称CS），中文可翻译为计算着色器，是一段能运行在显卡上但并不在正常渲染管线中执行的程序。从功能上，CS并不仅仅应用于渲染相关的功能，同时利用GPU并行计算的特性，CS可以承担大量的通用并行计算。</p>
+<h2 id="2-Unity中的ComputeShader"><a href="#2-Unity中的ComputeShader" class="headerlink" title="2.Unity中的ComputeShader"></a>2.Unity中的ComputeShader</h2><p>根据<a target="_blank" rel="noopener" href="https://docs.unity3d.com/Manual/class-ComputeShader.html">Unity官方文档</a>，Unity中的ComputeShader在技术上更接近于DX11的DirectCompute技术，其使用限制为：</p>
+<p>· 使用DX11或DX12以及支持SM5.0的GUP</p>
+<p>· 支持Metal graphics API的IOS及macOS设备</p>
+<p>· 支持Vulkan API的安卓、Linux以及Windows设备</p>
+<p>· 现代OpenGL平台（OpenGL4.3的Linux或Windows设备，OpenGL ES3.1的安卓设备。</p>
+<p>· Sony PS4 以及 Xbox One</p>
+<p><em>在运行时代码中调用 <strong>SystemInfo.supportsComputeShaders</strong> 可以获得当前平台是否支持CS的信息</em></p>
+<h2 id="3-在Unity中创建一个ComputeShader"><a href="#3-在Unity中创建一个ComputeShader" class="headerlink" title="3.在Unity中创建一个ComputeShader"></a>3.在Unity中创建一个ComputeShader</h2><p>通过在Project的Assets窗口右键，依次找到Create-&gt;Shader-&gt;Compute Shader即可完成一个CS资产的创建工作，如下图所示：<br><img src="https://s2.ax1x.com/2019/07/28/eMxV9x.jpg" alt="创建计算着色器资产"></p>
+<p>通过上述步骤创建的CS资产如下图所示，为一个后缀为.compute的文件,双击该文件即可对计算着色器进行编辑</p>
+<p><img src="https://s2.ax1x.com/2019/07/28/eMxtv8.jpg" alt="计算着色器资产"></p>
+<h2 id="4-何如编写ComputeShader"><a href="#4-何如编写ComputeShader" class="headerlink" title="4.何如编写ComputeShader"></a>4.何如编写ComputeShader</h2><p>首先编写unity的Shader我比较推荐使用<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VsCode</a>作为编辑器,同时安装插件ShaderlabVSCode, 这个插件可以在VsCode的插件商店下载到免费版，也可以在Unity的AssetStore购买付费版，付费版多一个自动格式，虽然这个功能不能100%正确的格式化Shader代码，但还是可以用一用。付费版售价25美刀，大家可以根据自己的情况选择购买。</p>
+<p>使用VsCode打开ComputeShader会看到如下的模板代码:</p>
+<p><img src="https://s2.ax1x.com/2019/07/28/eMxRrF.jpg" alt="CS示例代码"></p>
+<p>Unity中的ComputeShader使用HLSL语言进行编写，首先我们需要声明一个计算核心，写法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#pragma kernel &lt;Function Name&gt;</span><br></pre></td></tr></table></figure>
+<p>其中<Function Name>填写ComputeShader入口函数的名字，在Dispatch的时候可以根据函数名称确定哪一个ComputeShader奖杯执行</p>
+<p>然后声明一个RWTexture2D<float4>类型的变量用作接收RenderTarget。RWTexture2D表示一个支持Random Write(随机写入)的2D纹理，float4表示纹理每个像素的数据类型。</p>
+<p>然后我们可以看到在CS的入口函数上有一个声明[munthreads(8,8,1)]，这行代码声明了这个ComputeShader每一个线程组的线程数量，三个整型参数分别表示了每个线程组在XYZ三个维度上分别的线程数量。需要注意的是，这里的三个维度是逻辑上的一种抽象维度，不一定要和实际的几何空间一一对应。至于如何分配每个维度上的线程数量可根据自身计算的特性和需求来决定。</p>
+<p>完成线程数量声明后，我们就需要定义ComputeShader的主函数。同一个.conpute文件可包含多个ComputeShader的定义，可以理解为可以定义多个计算核心。示例代码中，函数无返回值，接收一个uint3的变量作为参数。这里函数的参数和SV_DispatchThreadID进行了语义绑定，代表的意义为这个参数是该线程在所有线程的中的位置，如下图所示：<br><img src="https://s2.ax1x.com/2019/08/10/eXYict.jpg" alt="线程ID示意图"><br>除了上述的语义外，还可以使用以下语义获取其他信息：</p>
+<p>· SV_GroupThreadID: 线程ID(线程在当前线程组中的ID)</p>
+<p>· SV_GroupID: 线程组ID</p>
+<p>· SV_DispatchThreadID: 线程在所有线程中的ID</p>
+<p>· SV_GroupIndex: 线程在线程组中的索引，计算规则为：</p>
+<pre><code>SV_GroupIndex = SV_GroupThreadID.z*dimx*dimy + 
+                  SV_GroupThreadID.y*dimx + 
+                  SV_GroupThreadID.x</code></pre>
+<h2 id="5-C-代码中调用ComputShader"><a href="#5-C-代码中调用ComputShader" class="headerlink" title="5.C#代码中调用ComputShader"></a>5.C#代码中调用ComputShader</h2><p>定义好CS后，需要再C#代码中进行调用(Dispatch)。为了显示CS的计算结果，这里我们先创建一个UI元素RawImage。<br>在C#代码中先声明如下几个变量：</p>
+<p><img src="https://s2.ax1x.com/2019/08/11/eXHOJO.jpg" alt="变量声明"></p>
+<p>然后在Start中进行初始化操作：</p>
+<p>初始化RT时一定要注意开启RT的enableRandomWrite属性以及调用Create方法<br><img src="https://s2.ax1x.com/2019/08/11/eXHbo6.jpg" alt="初始化RT"><br>其他初始化</p>
+<p><img src="https://s2.ax1x.com/2019/08/11/eXHHdx.jpg" alt="其他初始化"></p>
+<p>完成初始化后，即可开始Dispatch计算着色器<br><img src="https://s2.ax1x.com/2019/08/11/eXH7e1.jpg" alt="Dispatch"></p>
+<p>首先将RT设置到CSMain的Result纹理上，然后调用CS的Dispatch，这里指定了计算核心的索引，以及线程组规模为32x32x1;</p>
+<p>接下来再来看看CS的代码<br><img src="https://s2.ax1x.com/2019/08/11/eXHLFK.jpg" alt="计算着色器代码"></p>
+<p>和模板代码一样，我们定义了一个名为CSMain的计算核心，以及一个名为Result的RWTexture2D。</p>
+<p>计算核心的线程规模为16x16x1，这也是为什么上面Dispatch时，线程组需要32x32x1。因为我们的纹理声明为512x512(由于是2D纹理，其实可以写成512x512x1)。而512/16 = 32。为了确保所有像素都有一个线程进行处理，因此我们需要32x32x1个线程组。</p>
+<p>最后将C#代码赋给相机，设置好CS以及RawImage实例后，点击运行，即可看到如下的结果:<br><img src="https://s2.ax1x.com/2019/08/11/ejQGCt.jpg" alt="运行结果"></p>
+<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h2><p>在unity中使用ComputeShader的整个流程还是非常简单的，需要注意的地方主要是RT的创建，线程组规模以及线程组中线程的规模计算。</p>
+<p>ComputeShader由于其高效的运算能力可以在项目中执行较大规模的通用计算，例如一些图像处理，流体模拟等。即使目标平台暂不支持ComputeShader，也可以将其作为工具开发的一个备选的实现思路。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/HellowWorld/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Icon.jpg">
+      <meta itemprop="name" content="RCBelmont">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RCBelmont's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/21/HellowWorld/" class="post-title-link" itemprop="url">HellowWorld</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-21 01:04:27" itemprop="dateCreated datePublished" datetime="2019-07-21T01:04:27+08:00">2019-07-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-12 22:10:58" itemprop="dateModified" datetime="2020-09-12T22:10:58+08:00">2020-09-12</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/07/21/HellowWorld/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/07/21/HellowWorld/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>225</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="大家好"><a href="#大家好" class="headerlink" title="大家好"></a>大家好</h2><p>博客正式建立，今后将会在这里记录一些游戏开发上积累的小知识，主要是作为自己的总结，如果同时也能为别人带去一点帮助就再好不过了。</p>
+<p>同时也会写一些游戏和生活中遇到的有趣的事情，工作学习之余也要享受生活中的乐趣。</p>
+<hr>
+<p>由于我的能力尚且粗浅，文章中必然有不妥和疏漏之处，还请大佬斧正。文章的评论系统由于 LeanCloud 需要实名认证暂时没有开启，认证通过后会即使上线。</p>
+<hr>
+<p>博客内的文章部分也会同步在<a target="_blank" rel="noopener" href="https://segmentfault.com/u/rcbelmont">思否</a>上发布，还请大家多多支持。</p>
+<hr>
+<p>最后一张来自FF14的妖精王送给大家<br><img src="https://s2.ax1x.com/2019/07/21/eSyuCD.jpg" alt="妖精王"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RCBelmont"
+      src="/images/Icon.jpg">
+  <p class="site-author-name" itemprop="name">RCBelmont</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RCBelmont</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">6k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'qlqz0KyTuDJf92a30AmfkciY-gzGzoHsz',
+      appKey     : 'lbszOyW8G4NzTfozTKgnWTgg',
+      placeholder: "说点儿什么吧",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

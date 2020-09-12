@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在Unity中使用ComputeShader：初步接触1.什么是ComputeShader：ComputeShader(以下简称CS），中文可翻译为计算着色器，是一段能运行在显卡上但并不在正常渲染管线中执行的程序。从功能上，CS并不仅仅应用于渲染相关的功能，同时利用GPU并行计算的特性，CS可以承担大量的通用并行计算。 2.Unity中的ComputeShader根据Unity官方文档，Unity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Unity中使用ComputeShader：初步接触">
+<meta property="og:url" content="http://yoursite.com/2019/07/21/%E5%9C%A8Unity%E4%B8%AD%E4%BD%BF%E7%94%A8ComputeShader/index.html">
+<meta property="og:site_name" content="RCBelmont&#39;s Blog">
+<meta property="og:description" content="在Unity中使用ComputeShader：初步接触1.什么是ComputeShader：ComputeShader(以下简称CS），中文可翻译为计算着色器，是一段能运行在显卡上但并不在正常渲染管线中执行的程序。从功能上，CS并不仅仅应用于渲染相关的功能，同时利用GPU并行计算的特性，CS可以承担大量的通用并行计算。 2.Unity中的ComputeShader根据Unity官方文档，Unity">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/28/eMxV9x.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/28/eMxtv8.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/28/eMxRrF.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/10/eXYict.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/11/eXHOJO.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/11/eXHbo6.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/11/eXHHdx.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/11/eXH7e1.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/11/eXHLFK.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/08/11/ejQGCt.jpg">
+<meta property="article:published_time" content="2019-07-21T14:13:53.000Z">
+<meta property="article:modified_time" content="2020-09-12T14:10:58.955Z">
+<meta property="article:author" content="RCBelmont">
+<meta property="article:tag" content="Unity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/28/eMxV9x.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2019/07/21/%E5%9C%A8Unity%E4%B8%AD%E4%BD%BF%E7%94%A8ComputeShader/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>在Unity中使用ComputeShader：初步接触 | RCBelmont's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">RCBelmont's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/%E5%9C%A8Unity%E4%B8%AD%E4%BD%BF%E7%94%A8ComputeShader/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Icon.jpg">
+      <meta itemprop="name" content="RCBelmont">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RCBelmont's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在Unity中使用ComputeShader：初步接触
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-21 22:13:53" itemprop="dateCreated datePublished" datetime="2019-07-21T22:13:53+08:00">2019-07-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-12 22:10:58" itemprop="dateModified" datetime="2020-09-12T22:10:58+08:00">2020-09-12</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/07/21/%E5%9C%A8Unity%E4%B8%AD%E4%BD%BF%E7%94%A8ComputeShader/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/07/21/%E5%9C%A8Unity%E4%B8%AD%E4%BD%BF%E7%94%A8ComputeShader/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="在Unity中使用ComputeShader：初步接触"><a href="#在Unity中使用ComputeShader：初步接触" class="headerlink" title="在Unity中使用ComputeShader：初步接触"></a>在Unity中使用ComputeShader：初步接触</h1><h2 id="1-什么是ComputeShader："><a href="#1-什么是ComputeShader：" class="headerlink" title="1.什么是ComputeShader："></a>1.什么是ComputeShader：</h2><p>ComputeShader(以下简称CS），中文可翻译为计算着色器，是一段能运行在显卡上但并不在正常渲染管线中执行的程序。从功能上，CS并不仅仅应用于渲染相关的功能，同时利用GPU并行计算的特性，CS可以承担大量的通用并行计算。</p>
+<h2 id="2-Unity中的ComputeShader"><a href="#2-Unity中的ComputeShader" class="headerlink" title="2.Unity中的ComputeShader"></a>2.Unity中的ComputeShader</h2><p>根据<a target="_blank" rel="noopener" href="https://docs.unity3d.com/Manual/class-ComputeShader.html">Unity官方文档</a>，Unity中的ComputeShader在技术上更接近于DX11的DirectCompute技术，其使用限制为：</p>
+<p>· 使用DX11或DX12以及支持SM5.0的GUP</p>
+<p>· 支持Metal graphics API的IOS及macOS设备</p>
+<p>· 支持Vulkan API的安卓、Linux以及Windows设备</p>
+<p>· 现代OpenGL平台（OpenGL4.3的Linux或Windows设备，OpenGL ES3.1的安卓设备。</p>
+<p>· Sony PS4 以及 Xbox One</p>
+<p><em>在运行时代码中调用 <strong>SystemInfo.supportsComputeShaders</strong> 可以获得当前平台是否支持CS的信息</em></p>
+<h2 id="3-在Unity中创建一个ComputeShader"><a href="#3-在Unity中创建一个ComputeShader" class="headerlink" title="3.在Unity中创建一个ComputeShader"></a>3.在Unity中创建一个ComputeShader</h2><p>通过在Project的Assets窗口右键，依次找到Create-&gt;Shader-&gt;Compute Shader即可完成一个CS资产的创建工作，如下图所示：<br><img src="https://s2.ax1x.com/2019/07/28/eMxV9x.jpg" alt="创建计算着色器资产"></p>
+<p>通过上述步骤创建的CS资产如下图所示，为一个后缀为.compute的文件,双击该文件即可对计算着色器进行编辑</p>
+<p><img src="https://s2.ax1x.com/2019/07/28/eMxtv8.jpg" alt="计算着色器资产"></p>
+<h2 id="4-何如编写ComputeShader"><a href="#4-何如编写ComputeShader" class="headerlink" title="4.何如编写ComputeShader"></a>4.何如编写ComputeShader</h2><p>首先编写unity的Shader我比较推荐使用<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VsCode</a>作为编辑器,同时安装插件ShaderlabVSCode, 这个插件可以在VsCode的插件商店下载到免费版，也可以在Unity的AssetStore购买付费版，付费版多一个自动格式，虽然这个功能不能100%正确的格式化Shader代码，但还是可以用一用。付费版售价25美刀，大家可以根据自己的情况选择购买。</p>
+<p>使用VsCode打开ComputeShader会看到如下的模板代码:</p>
+<p><img src="https://s2.ax1x.com/2019/07/28/eMxRrF.jpg" alt="CS示例代码"></p>
+<p>Unity中的ComputeShader使用HLSL语言进行编写，首先我们需要声明一个计算核心，写法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#pragma kernel &lt;Function Name&gt;</span><br></pre></td></tr></table></figure>
+<p>其中<Function Name>填写ComputeShader入口函数的名字，在Dispatch的时候可以根据函数名称确定哪一个ComputeShader奖杯执行</p>
+<p>然后声明一个RWTexture2D<float4>类型的变量用作接收RenderTarget。RWTexture2D表示一个支持Random Write(随机写入)的2D纹理，float4表示纹理每个像素的数据类型。</p>
+<p>然后我们可以看到在CS的入口函数上有一个声明[munthreads(8,8,1)]，这行代码声明了这个ComputeShader每一个线程组的线程数量，三个整型参数分别表示了每个线程组在XYZ三个维度上分别的线程数量。需要注意的是，这里的三个维度是逻辑上的一种抽象维度，不一定要和实际的几何空间一一对应。至于如何分配每个维度上的线程数量可根据自身计算的特性和需求来决定。</p>
+<p>完成线程数量声明后，我们就需要定义ComputeShader的主函数。同一个.conpute文件可包含多个ComputeShader的定义，可以理解为可以定义多个计算核心。示例代码中，函数无返回值，接收一个uint3的变量作为参数。这里函数的参数和SV_DispatchThreadID进行了语义绑定，代表的意义为这个参数是该线程在所有线程的中的位置，如下图所示：<br><img src="https://s2.ax1x.com/2019/08/10/eXYict.jpg" alt="线程ID示意图"><br>除了上述的语义外，还可以使用以下语义获取其他信息：</p>
+<p>· SV_GroupThreadID: 线程ID(线程在当前线程组中的ID)</p>
+<p>· SV_GroupID: 线程组ID</p>
+<p>· SV_DispatchThreadID: 线程在所有线程中的ID</p>
+<p>· SV_GroupIndex: 线程在线程组中的索引，计算规则为：</p>
+<pre><code>SV_GroupIndex = SV_GroupThreadID.z*dimx*dimy + 
+                  SV_GroupThreadID.y*dimx + 
+                  SV_GroupThreadID.x</code></pre>
+<h2 id="5-C-代码中调用ComputShader"><a href="#5-C-代码中调用ComputShader" class="headerlink" title="5.C#代码中调用ComputShader"></a>5.C#代码中调用ComputShader</h2><p>定义好CS后，需要再C#代码中进行调用(Dispatch)。为了显示CS的计算结果，这里我们先创建一个UI元素RawImage。<br>在C#代码中先声明如下几个变量：</p>
+<p><img src="https://s2.ax1x.com/2019/08/11/eXHOJO.jpg" alt="变量声明"></p>
+<p>然后在Start中进行初始化操作：</p>
+<p>初始化RT时一定要注意开启RT的enableRandomWrite属性以及调用Create方法<br><img src="https://s2.ax1x.com/2019/08/11/eXHbo6.jpg" alt="初始化RT"><br>其他初始化</p>
+<p><img src="https://s2.ax1x.com/2019/08/11/eXHHdx.jpg" alt="其他初始化"></p>
+<p>完成初始化后，即可开始Dispatch计算着色器<br><img src="https://s2.ax1x.com/2019/08/11/eXH7e1.jpg" alt="Dispatch"></p>
+<p>首先将RT设置到CSMain的Result纹理上，然后调用CS的Dispatch，这里指定了计算核心的索引，以及线程组规模为32x32x1;</p>
+<p>接下来再来看看CS的代码<br><img src="https://s2.ax1x.com/2019/08/11/eXHLFK.jpg" alt="计算着色器代码"></p>
+<p>和模板代码一样，我们定义了一个名为CSMain的计算核心，以及一个名为Result的RWTexture2D。</p>
+<p>计算核心的线程规模为16x16x1，这也是为什么上面Dispatch时，线程组需要32x32x1。因为我们的纹理声明为512x512(由于是2D纹理，其实可以写成512x512x1)。而512/16 = 32。为了确保所有像素都有一个线程进行处理，因此我们需要32x32x1个线程组。</p>
+<p>最后将C#代码赋给相机，设置好CS以及RawImage实例后，点击运行，即可看到如下的结果:<br><img src="https://s2.ax1x.com/2019/08/11/ejQGCt.jpg" alt="运行结果"></p>
+<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h2><p>在unity中使用ComputeShader的整个流程还是非常简单的，需要注意的地方主要是RT的创建，线程组规模以及线程组中线程的规模计算。</p>
+<p>ComputeShader由于其高效的运算能力可以在项目中执行较大规模的通用计算，例如一些图像处理，流体模拟等。即使目标平台暂不支持ComputeShader，也可以将其作为工具开发的一个备选的实现思路。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Unity/" rel="tag"># Unity</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/07/21/HellowWorld/" rel="prev" title="HellowWorld">
+      <i class="fa fa-chevron-left"></i> HellowWorld
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/31/UE4-%E6%8F%92%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0GlobalShader/" rel="next" title="UE4-在插件中添加GlobalShader">
+      UE4-在插件中添加GlobalShader <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8Unity%E4%B8%AD%E4%BD%BF%E7%94%A8ComputeShader%EF%BC%9A%E5%88%9D%E6%AD%A5%E6%8E%A5%E8%A7%A6"><span class="nav-number">1.</span> <span class="nav-text">在Unity中使用ComputeShader：初步接触</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFComputeShader%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">1.什么是ComputeShader：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Unity%E4%B8%AD%E7%9A%84ComputeShader"><span class="nav-number">1.2.</span> <span class="nav-text">2.Unity中的ComputeShader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%9C%A8Unity%E4%B8%AD%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAComputeShader"><span class="nav-number">1.3.</span> <span class="nav-text">3.在Unity中创建一个ComputeShader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E4%BD%95%E5%A6%82%E7%BC%96%E5%86%99ComputeShader"><span class="nav-number">1.4.</span> <span class="nav-text">4.何如编写ComputeShader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-C-%E4%BB%A3%E7%A0%81%E4%B8%AD%E8%B0%83%E7%94%A8ComputShader"><span class="nav-number">1.5.</span> <span class="nav-text">5.C#代码中调用ComputShader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%80%BB%E7%BB%93"><span class="nav-number">1.6.</span> <span class="nav-text">6.总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RCBelmont"
+      src="/images/Icon.jpg">
+  <p class="site-author-name" itemprop="name">RCBelmont</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RCBelmont</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">6k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'qlqz0KyTuDJf92a30AmfkciY-gzGzoHsz',
+      appKey     : 'lbszOyW8G4NzTfozTKgnWTgg',
+      placeholder: "说点儿什么吧",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
